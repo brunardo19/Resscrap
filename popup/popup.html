@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resscrap</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Resscrap</h1>
+        </header>
+
+        <div id="siteStatus" class="site-status">
+            <span class="status-dot"></span>
+            <span class="status-text">Detecting site...</span>
+        </div>
+
+        <div class="stats-card">
+            <span class="label">Stored Results</span>
+            <span class="count" id="resultsCount">0</span>
+        </div>
+
+        <div class="actions">
+            <button id="btnExtract" class="btn primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="12" y1="18" x2="12" y2="12"></line>
+                    <line x1="9" y1="15" x2="15" y2="15"></line>
+                </svg>
+                Extract from Page
+            </button>
+            <div id="statusMessage" class="status"></div>
+
+            <div class="secondary-actions">
+                <button id="btnDownload" class="btn secondary" disabled>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download CSV
+                </button>
+                <button id="btnClear" class="btn danger" disabled>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                    Clear
+                </button>
+            </div>
+        </div>
+
+        <div id="previewContainer" class="preview-container" style="display: none;">
+            <div class="preview-header">
+                <h3>Extracted Data</h3>
+            </div>
+            <ul id="previewList" class="preview-list"></ul>
+            <div class="pagination">
+                <button id="btnPrev" class="btn-icon" disabled>&lt;</button>
+                <span id="pageInfo">1 / 1</span>
+                <button id="btnNext" class="btn-icon" disabled>&gt;</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../utils/csv_generator.js"></script>
+    <script src="popup.js"></script>
+</body>
+
+</html>

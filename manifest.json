@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Resscrap Extension",
+  "version": "1.0",
+  "description": "Extracts search results from academic repositories (arXiv, ScienceDirect) to a CSV.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://arxiv.org/*",
+    "*://*.sciencedirect.com/*",
+    "*://dl.acm.org/*",
+    "*://ieeexplore.ieee.org/*",
+    "*://dblp.org/*",
+    "*://*.dblp.org/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Resscrap"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://arxiv.org/search/*",
+        "*://*.sciencedirect.com/search*",
+        "*://dl.acm.org/*",
+        "*://ieeexplore.ieee.org/*",
+        "*://dblp.org/*",
+        "*://*.dblp.org/*"
+      ],
+      "js": [
+        "content_scripts/extractor_arxiv.js",
+        "content_scripts/extractor_sciencedirect.js",
+        "content_scripts/extractor_acm.js",
+        "content_scripts/extractor_ieee.js",
+        "content_scripts/extractor_dblp.js",
+        "content_scripts/content_main.js"
+      ]
+    }
+  ]
+}
